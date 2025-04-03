@@ -6,7 +6,7 @@ from zipfile import ZipFile
 
 DATA_PATH = 'SQL/scripts/dados_operadoras'
 ZIP_PATH = os.path.join(DATA_PATH, "zip_files")
-EXTRACT_PATH = os.path.join(DATA_PATH, "dados_csv")
+EXTRACT_PATH = os.path.join("SQL\scripts\dados_operadoras\dados_csv\demonstracao_contabil")
 os.makedirs(ZIP_PATH, exist_ok=True)
 os.makedirs(EXTRACT_PATH, exist_ok=True)
 

@@ -58,7 +58,6 @@ import csv
 csv_directory = 'SQL/scripts/dados_operadoras/dados_csv'
 
 def importar_operadoras(csv_directory):
-    """Importa os dados de todos os arquivos CSV no diretório para a tabela operadoras_ativas."""
     for filename in os.listdir(csv_directory):
         if filename.endswith(".csv"):  # Verifica se o arquivo é um CSV
             file_path = os.path.join(csv_directory, filename)

@@ -6,7 +6,7 @@ url = 'https://dadosabertos.ans.gov.br/FTP/PDA/operadoras_de_plano_de_saude_ativ
 
 response = requests.get(url)
 DATA_PATH = 'SQL/scripts/dados_operadoras'
-EXTRACT_PATH = os.path.join(DATA_PATH, "dados_csv")
+EXTRACT_PATH = os.path.join(DATA_PATH, "dados_csv/operadoras")
 
 
 def listar_csv():
