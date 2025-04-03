@@ -5,6 +5,9 @@ import requests
 url = 'https://dadosabertos.ans.gov.br/FTP/PDA/operadoras_de_plano_de_saude_ativas/'
 
 response = requests.get(url)
+DATA_PATH = 'SQL/scripts/dados_operadoras'
+EXTRACT_PATH = os.path.join(DATA_PATH, "dados_csv")
+
 
 def listar_csv():
     soup = BeautifulSoup(response.text, "html.parser")
@@ -17,13 +20,9 @@ def listar_csv():
 
 
 def baixar_csv(csv):
-    destino = 'dados_operadoras/dados_csv'
-
-    if not os.path.exists(destino):
-        os.makedirs(destino)
 
     for csvlink in csv:
-        nome_arquivo = os.path.join(destino, os.path.basename(csvlink))
+        nome_arquivo = os.path.join(EXTRACT_PATH, os.path.basename(csvlink))
         
         response = requests.get(csvlink)
         if response.status_code == 200:
