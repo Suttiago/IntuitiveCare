@@ -36,7 +36,7 @@ export default {
       this.operadoras = [];
 
       try {
-        const response = await axios.get(`http://172.168.50.25:8080/operadoras?q=${this.termoBusca}`);
+        const response = await axios.get(`http://127.0.0.1:8080/operadoras?q=${this.termoBusca}`);
         this.operadoras = response.data;
       } catch (error) {
         this.erro = error.response?.data?.mensagem || "Erro ao buscar operadoras.";
