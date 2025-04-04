@@ -14,7 +14,7 @@ class OperadoraAtiva(Base):
     nome_fantasia = Column(String(255))
     modalidade = Column(String(100))
     logradouro = Column(String(255))
-    numero = Column(String(10))
+    numero = Column(String(255))
     complemento = Column(String(255))
     bairro = Column(String(255))
     cidade = Column(String(255))

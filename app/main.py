@@ -1,13 +1,11 @@
-from banco.scripts.importers.operadoras_importa import importar_operadoras
-
+from api.app import app
+import os
+#from banco.scripts.importers.contabilidade_importa import importar_contabilidade
 def main():
-    # Caminho do diretório CSV
-    csv_directory = r'c:\Users\tiago.sversut\Desktop\teste (2)\IntuitiveCare\app\banco\dados\dados_operadoras\dados_csv\operadoras'
-    
-    # Testar a importação de operadoras
-    print("Iniciando a importação de operadoras...")
-    importar_operadoras(csv_directory)
-    print("✔ Importação concluída com sucesso!")
+    base_dir = os.path.dirname(os.path.abspath(__file__))
+    csv_contabilidade = os.path.join(base_dir, "banco", "dados", "dados_operadoras", "dados_csv", "demonstracao_contabil")
+    #importar_contabilidade(csv_contabilidade)
+    app.run(debug=True,port='8080',host='0.0.0.0')
 
 if __name__ == "__main__":
     main()

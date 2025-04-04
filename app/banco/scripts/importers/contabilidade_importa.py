@@ -1,8 +1,7 @@
 import os
 import csv
-from db import session
-from models import DemonstracaoContabil
-
+from banco.scripts.db import session
+from banco.scripts.models import DemonstracaoContabil
 def importar_contabilidade(csv_contabilidade):
     for filename in os.listdir(csv_contabilidade):
         if filename.endswith(".csv"):
