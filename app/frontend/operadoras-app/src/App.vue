@@ -1,12 +1,19 @@
 <template>
   <div>
-    <h1>Buscar Operadoras</h1>
-    <input v-model="termoBusca" @input="buscarOperadoras" placeholder="Digite o nome da operadora" />
-    <ul>
-      <li v-for="operadora in operadoras" :key="operadora.RegistroANS">
-        {{ operadora.NomeFantasia }} - {{ operadora.RazaoSocial }}
+    <h2>Buscar Operadoras</h2>
+    <input v-model="termoBusca" @keyup.enter="buscarOperadoras" placeholder="Digite um nome..."/>
+    <button @click="buscarOperadoras">Buscar</button>
+
+    <div v-if="loading">Carregando...</div>
+    <div v-if="erro" class="erro">{{ erro }}</div>
+
+    <ul v-if="operadoras.length">
+      <li v-for="op in operadoras" :key="op.registro_ans">
+        <strong>{{ op.nome_fantasia }}</strong> - {{ op.modalidade }} ({{ op.uf }})
       </li>
     </ul>
+
+    <p v-if="operadoras.length === 0 && !loading && !erro">Nenhuma operadora encontrada.</p>
   </div>
 </template>
 
@@ -18,29 +25,31 @@ export default {
     return {
       termoBusca: "",
       operadoras: [],
+      loading: false,
+      erro: "",
     };
   },
   methods: {
     async buscarOperadoras() {
-      if (this.termoBusca.length < 2) {
-        this.operadoras = [];
-        return;
-      }
+      this.loading = true;
+      this.erro = "";
+      this.operadoras = [];
+
       try {
-        const response = await axios.get(`http://127.0.0.1:5000/buscar?termo=${this.termoBusca}`);
+        const response = await axios.get(`http://172.168.50.25:8080/operadoras?q=${this.termoBusca}`);
         this.operadoras = response.data;
       } catch (error) {
-        console.error("Erro ao buscar operadoras:", error);
+        this.erro = error.response?.data?.mensagem || "Erro ao buscar operadoras.";
+      } finally {
+        this.loading = false;
       }
     },
   },
 };
 </script>
 
-<style>
-input {
-  width: 100%;
-  padding: 10px;
-  margin: 10px 0;
+<style scoped>
+.erro {
+  color: red;
 }
 </style>
