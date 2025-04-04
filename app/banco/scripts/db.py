@@ -1,6 +1,6 @@
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
-from models import Base
+from banco.scripts.models import Base
 
 DATABASE_URL = "postgresql+psycopg2://postgres:root@localhost:5432/intuitivecare"
 
@@ -11,3 +11,4 @@ session = Session()
 def criar_tabelas():
     Base.metadata.create_all(engine)
     print("✔ Tabelas criadas com sucesso!")
+    

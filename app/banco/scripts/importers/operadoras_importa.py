@@ -1,7 +1,7 @@
 import os
 import csv
-from db import session
-from models import OperadoraAtiva
+from banco.scripts.db import session   
+from banco.scripts.models import OperadoraAtiva
 
 def importar_operadoras(csv_directory):
     for filename in os.listdir(csv_directory):
@@ -39,3 +39,4 @@ def importar_operadoras(csv_directory):
                     session.add(operadora)
                 session.commit()
             print(f"✔ Dados importados do arquivo: {file_path}")
+            
