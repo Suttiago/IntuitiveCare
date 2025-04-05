@@ -38,10 +38,7 @@ build/
 *.coverage
 .coverage.*
 
-# Diretórios específicos do projeto
-app/data/brutos/
-app/data/processados/
-app/data/zip/
+
 
 # Diretórios de cache
 .cache/
