@@ -1,11 +1,11 @@
 from flask import Flask, request, jsonify
 from flask_cors import CORS
-from sqlalchemy.orm import sessionmaker
 from sqlalchemy import func
-from banco.scripts.db import engine, session
+from banco.scripts.db import session
 from banco.scripts.models import OperadoraAtiva
 
 app = Flask(__name__)
+app.config['JSON_AS_ASCII'] = False
 CORS(app)
 
 @app.route("/operadoras", methods=["GET"])

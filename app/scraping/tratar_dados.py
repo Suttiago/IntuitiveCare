@@ -2,7 +2,7 @@ import pandas as pd
 import pdfplumber
 from zipfile import ZipFile
 
-pdf_caminho = "anexos/Anexo_I_Rol_2021RN_465.2021_RN627L.2024.pdf"
+pdf_caminho = "app/data/dados_puros/Anexo_I_Rol_2021RN_465.2021_RN627L.2024.pdf"
 
 def extrair_tabelas(pdf_caminho):
     data = []
@@ -13,7 +13,7 @@ def extrair_tabelas(pdf_caminho):
                 data.extend(table)
     return data
 
-csv_path = "Teste_Tiago.csv"
+csv_path = "app/data/dados_puros/tiago.csv"
 
 def salvar_csv(data, csv_path):
     if not data:
@@ -30,7 +30,7 @@ def salvar_csv(data, csv_path):
 
 
 def csv_to_zip(csv_path):
-    zip_path = "Teste_Tiago_Sversut.zip"
+    zip_path = "app/data/zip/Teste_Tiago_Sversut.zip"
     with ZipFile(zip_path, 'w') as zipf:
         zipf.write(csv_path)
 

@@ -5,8 +5,8 @@ from zipfile import ZipFile
 
 URL = "https://www.gov.br/ans/pt-br/acesso-a-informacao/participacao-da-sociedade/atualizacao-do-rol-de-procedimentos"
 
-BRUTOS_DIR = os.path.join("data", "brutos")
-ZIP_DIR = os.path.join("data", "zip")
+BRUTOS_DIR = os.path.join("app/data/dados_puros")
+ZIP_DIR = os.path.join("app/data/zip")
 
 def criar_diretorios():
     os.makedirs(BRUTOS_DIR, exist_ok=True)
